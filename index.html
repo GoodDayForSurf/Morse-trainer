@@ -67,14 +67,14 @@
 
 </div>
 <div id="controls-bar">
-     <button onclick="playLetters(['с','о', 'с'])">SOS</button>
+    <button onclick="playLetters(['с','о', 'с'])">SOS</button>
     <button onclick="playRndLetters(1)">RND 1</button>
     <button onclick="playRndLetters(2)">RND 2</button>
     <button onclick="playRndLetters(3)">RND 3</button>
 
-    <button onclick="onRepeat()">Rep</button>
+    <button onclick="onRepeat()">Repeat</button>
     <button onclick="onCheck()">Check</button>
-    <button onclick="setCounter(0)">Rst cntr</button>
+    <button onclick="setCounter(0)">Reset counter</button>
 
 
 </div>
@@ -228,8 +228,10 @@
             if (NOWPLAYING) return;
 
             NOWPLAYING = true;
+            console.log('-------------> playRndLetters', letters, $('#lamp'))
+            const title = letters.map( l => tab[l]).join('  ') + ' = ' + letters.join(' ');
+            $('lamp')?.setAttribute('title', title)
 
-            console.log('-------------> playRndLetters', letters)
             task = letters;
 
            return letters.reduce( (prev, cur) => {
@@ -277,11 +279,6 @@
             });
 
         }
-
-
-
-
-
     </script>
 </body>
 </html>
